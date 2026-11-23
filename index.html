@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Lizhe Bai's portfolio of actuarial modeling, insurance risk, and data visualization projects.">
+<title>Lizhe Bai | Actuarial &amp; Analytics Portfolio</title>
+<style>
+:root{color-scheme:light;--ink:#182b36;--muted:#4e626a;--accent:#155b50;--paper:#f8f7f2;--line:#ccd7d2;--wash:#e6efe9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.65 system-ui,sans-serif}
+a{color:var(--accent);text-underline-offset:.25em}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
+.wrap{width:min(100% - 3rem,66rem);margin-inline:auto}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:1rem}
+.brand{font-weight:750;color:var(--ink);text-decoration:none}
+nav{display:flex;gap:clamp(.8rem,4vw,2rem)}
+nav a{font-size:.91rem}
+.hero{padding-block:clamp(3rem,8vw,6rem) clamp(2.4rem,6vw,4rem)}
+.kicker,.meta{margin:0;color:var(--accent);font-size:.8rem;font-weight:720;letter-spacing:.075em;text-transform:uppercase}
+h1,h2,h3{font-family:Georgia,serif;font-weight:500;line-height:1.12;text-wrap:balance}
+h1{font-size:clamp(3.6rem,10vw,7rem);letter-spacing:-.065em;margin:.3rem 0 .7rem}
+h2{font-size:clamp(2rem,5vw,3.1rem);letter-spacing:-.035em;margin:0 0 1.4rem}
+h3{font-size:clamp(1.6rem,3.6vw,2.3rem);letter-spacing:-.025em;margin:.65rem 0}
+p{margin:.6rem 0 1rem}
+.intro{max-width:37rem;font-size:clamp(1.05rem,2.6vw,1.32rem);color:var(--muted)}
+.button{display:inline-block;margin-top:.6rem;padding:.65rem 1.1rem;background:var(--accent);color:white;text-decoration:none;border-radius:.25rem;font-weight:650}
+.projects{border-top:1px solid var(--line);padding-top:1.5rem}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;align-items:start}
+article{border:1px solid var(--line);border-radius:.4rem;padding:clamp(1.15rem,3.5vw,2rem);background:#fff}
+.featured{grid-column:1/-1;background:var(--wash)}
+.featured h3{font-size:clamp(2rem,5vw,3.15rem)}
+article p{max-width:49rem}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.75rem;margin:1.2rem 0}
+.facts div{border-top:1px solid var(--line);padding-top:.55rem}
+.facts dt{font-size:.82rem;color:var(--muted)}
+.facts dd{margin:0;font-weight:700}
+.workflow{padding-inline-start:1.4rem}
+.workflow li+li{margin-top:.55rem}
+summary{cursor:pointer;color:var(--accent);font-weight:700;width:fit-content}
+details[open] summary{margin-bottom:.75rem}
+.about{padding-block:clamp(2.7rem,7vw,5rem);max-width:47rem}
+footer{border-top:1px solid var(--line);padding-block:1.3rem;color:var(--muted)}
+@media(max-width:42rem){.grid{grid-template-columns:1fr}}
+@media(max-width:24rem){.wrap{width:calc(100% - 2rem)}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="brand" href="#top">Lizhe Bai</a>
+<nav aria-label="Main"><a href="#projects">Projects</a><a href="#about">About</a><a href="https://github.com/peanutbai964-svg">GitHub</a></nav>
+</div></header>
+<main id="top" class="wrap">
+<section class="hero" aria-labelledby="name">
+<p class="kicker">UBC Sauder · Master of Business Analytics</p>
+<h1 id="name">Lizhe Bai</h1>
+<p class="intro">I’m interested in how statistical models and clear visualizations can help people understand risk and make better decisions.</p>
+<a class="button" href="#projects">Explore projects</a>
+</section>
+<section id="projects" class="projects" aria-labelledby="projects-title">
+<h2 id="projects-title">Selected projects</h2>
+<div class="grid">
+<article class="featured" aria-labelledby="mortality-title">
+<p class="meta">Undergraduate thesis · Mortality modeling</p>
+<h3 id="mortality-title">Forecasting Cause-Specific Mortality</h3>
+<p>I compared a long short-term memory model (LSTM) with a vector error correction model (VECM) to see how model choice changes long-term mortality projections for Sweden.</p>
+<dl class="facts">
+<div><dt>Historical data</dt><dd>1951–2024</dd></div>
+<div><dt>Data preparation</dt><dd>19 age groups</dd></div>
+<div><dt>Forecast horizon</dt><dd>2025–2035</dd></div>
+<div><dt>Implementation</dt><dd>R and Python</dd></div>
+</dl>
+<p>The LSTM had lower reported error for cancer and for infectious and parasitic diseases in both sexes. The VECM had lower error for female respiratory mortality and male circulatory mortality. The two models also diverged in their projections for infectious and parasitic diseases, with the VECM projecting an increase and the LSTM projecting a flatter trend.</p>
+<details><summary>Explore methods and code</summary>
+<ol class="workflow">
+<li><strong>Prepare the data in R.</strong> I harmonized ICD-7 through ICD-10 records from the WHO Mortality Database, aligned deaths and population counts by age and sex, and aggregated rates into five cause-specific series per sex. The five groups cover cancer, circulatory and respiratory diseases, infectious and parasitic diseases, and external causes.</li>
+<li><strong>Fit and evaluate the models.</strong> I used Johansen cointegration tests and fitted the VECM with <code>urca</code> and <code>vars</code>. In Python, I used <code>scikit-learn</code> to standardize the training series and Keras to fit an LSTM on sliding windows of log mortality rates. The historical evaluation used 1951–2009 for training and 2010–2024 for evaluation. The LSTM tuning used rolling-window RMSE with observed inputs, while the VECM script produced a fixed-origin multi-step forecast. The reported errors reflect those different evaluation setups.</li>
+<li><strong>Project and test sensitivity.</strong> I refit both models on data through 2024 for the 2025–2035 projections. In a separate LSTM sensitivity check, I compared projections from models trained through 2019 and 2024 over the shared 2025–2035 horizon to see how including the pandemic-era observations changed the projections.</li>
+</ol>
+<p><a class="button" href="https://github.com/peanutbai964-svg/mortality-forecasting">View project code on GitHub</a></p>
+</details>
+</article>
+<article>
+<p class="meta">SOA Case Analysis Competition · Team project</p>
+<h3>Dam Insurance Pricing</h3>
+<p>Our team designed a dam insurance program that included third-party liability coverage.</p>
+<details><summary>Read project summary</summary>
+<p>We used random forests to screen potential rating factors and a generalized linear model to estimate their effects. We also built cash-flow projections and tested how changes in assumptions affected the proposed program.</p>
+</details>
+</article>
+<article>
+<p class="meta">Data visualization coursework · Tableau</p>
+<h3>Vancouver Parking Ticket Patterns</h3>
+<p>Our team explored where and when parking tickets were issued in Vancouver from 2014 to 2025 to help drivers recognize common situations that lead to tickets.</p>
+<details><summary>Read project summary</summary>
+<p>We visualized ticket concentrations by location, compared weekday and seasonal patterns, and explored common violation types. These views helped us frame practical takeaways about where and when drivers should pay particular attention to parking rules.</p>
+</details>
+</article>
+</div>
+</section>
+<section id="about" class="about" aria-labelledby="about-title">
+<h2 id="about-title">About me</h2>
+<p>I’m a Master of Business Analytics student at UBC Sauder with an undergraduate background in insurance. At KPMG, I supported internal-control assessments as a risk management consulting intern. My interests include actuarial modeling, insurance risk, and applied analytics.</p>
+</section>
+</main>
+<footer><div class="wrap">Lizhe Bai · <a href="https://github.com/peanutbai964-svg">GitHub</a></div></footer>
+</body>
+</html>
