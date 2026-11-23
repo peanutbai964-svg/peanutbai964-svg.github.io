@@ -45,16 +45,13 @@ footer{border-top:1px solid var(--line);padding-block:1.3rem;color:var(--muted)}
 @media(max-width:42rem){.grid{grid-template-columns:1fr}}
 @media(max-width:24rem){.wrap{width:calc(100% - 2rem)}}
 .yelp{grid-column:1/-1}
-.yelp-charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.15rem 0}
-.yelp figure{margin:0;padding:1rem;background:var(--paper);border:1px solid var(--line);border-radius:.4rem}
-.yelp figcaption{font-weight:750;line-height:1.35}
-.chart-note{font-size:.88rem;color:var(--muted);margin:.45rem 0}
-.chart-bars{padding:0;list-style:none;margin:.8rem 0}
-.chart-bars li{display:grid;grid-template-columns:minmax(3.3rem,6.3rem) 1fr 3.1rem;align-items:center;gap:.5rem;margin:.5rem 0;font-size:.86rem}
-.chart-bars strong{text-align:right;font-variant-numeric:tabular-nums}
-.bar-track{display:block;background:var(--wash);border-radius:.2rem}
-.bar-track span{display:block;height:.8rem;background:var(--accent);border-radius:.2rem}
-@media(max-width:42rem){.yelp-charts{grid-template-columns:1fr}}
+.yelp-study{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);align-items:start;gap:clamp(1rem,4vw,2.5rem);padding-top:1.45rem;margin-top:1.45rem;border-top:1px solid var(--line)}
+.yelp-study h4{font:500 clamp(1.25rem,2.7vw,1.65rem)/1.2 Georgia,serif;margin:0 0 .55rem}
+.yelp figure{margin:0}
+.yelp figure a{display:block}
+.yelp img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:.25rem}
+.yelp figcaption{font-size:.8rem;color:var(--muted);margin-top:.35rem}
+@media(max-width:48rem){.yelp-study{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -93,26 +90,33 @@ footer{border-top:1px solid var(--line);padding-block:1.3rem;color:var(--muted)}
 </details>
 </article>
 <article id="yelp-visualization" class="yelp" aria-labelledby="yelp-title">
-<p class="meta">Data visualization coursework · Tableau</p>
-<h3 id="yelp-title">Yelp Reviews and User Engagement</h3>
-<p>I used Tableau to explore how review activity changed in 2020 and how different types of votes related to a user’s fan count. These charts adapt selected results from my Tableau story and dashboard for the web.</p>
-<div class="yelp-charts">
-<figure>
-<figcaption>Review volume fell 53.1% in 2020</figcaption>
-<p class="chart-note">Annual review count, indexed to 2019 = 100</p>
-<ul class="chart-bars"><li><span>2019</span><span class="bar-track" aria-hidden="true"><span style="width:100%"></span></span><strong>100</strong></li><li><span>2020</span><span class="bar-track" aria-hidden="true"><span style="width:46.9%"></span></span><strong>46.9</strong></li></ul>
-<p class="chart-note">Monthly average star ratings stayed near 3.7 in the Tableau story.</p>
-</figure>
-<figure>
-<figcaption>Useful and funny votes had similar correlations with fan count</figcaption>
-<p class="chart-note">Spearman’s ρ · 138,375 Yelp profiles</p>
-<ul class="chart-bars"><li><span>Useful votes</span><span class="bar-track" aria-hidden="true"><span style="width:64%"></span></span><strong>0.640</strong></li><li><span>Funny votes</span><span class="bar-track" aria-hidden="true"><span style="width:63.3%"></span></span><strong>0.633</strong></li></ul>
-<p class="chart-note">Measured per review, funny votes had a stronger association with fan count (0.438) than useful votes (0.361).</p>
-</figure>
+<p class="meta">Visual analytics · Tableau</p>
+<h3 id="yelp-title">Understanding Yelp Reviews in Vancouver</h3>
+<p>I used Yelp business and review records to answer two questions: How can a reader explore Vancouver’s restaurant scene by cuisine and rating? And did review volume and average ratings change in the same way in 2020?</p>
+
+<section class="yelp-study" aria-labelledby="yelp-restaurant-title">
+<div>
+<h4 id="yelp-restaurant-title">Explore the restaurant scene</h4>
+<p>I built a dashboard covering 7,503 restaurant listings. The map shows where restaurants are located, the cuisine filter narrows the view, and the rating breakdown and top-10 table give readers two ways to compare what they see.</p>
+<p><strong>Finding.</strong> Medina Cafe led the displayed ranking with 2,302 reviews. Showing star ratings alongside review counts lets readers compare visibility and customer ratings in the same view.</p>
 </div>
-<details><summary>Data and interpretation</summary>
-<p>The analysis uses Yelp review and user datasets supplied for coursework. Profile measures are lifetime totals. The correlations describe associations, and the annual review comparison describes the change in this sample during 2020.</p>
-</details>
+<figure>
+<a href="assets/yelp-restaurants.webp" aria-label="Open the full-size Tableau restaurant dashboard"><img src="assets/yelp-restaurants.webp" width="1003" height="802" loading="lazy" alt="Original Tableau restaurant dashboard with a Vancouver map, cuisine filter, star-rating treemap, and table of the ten most-reviewed restaurants."></a>
+<figcaption>Original Tableau dashboard · Click to enlarge</figcaption>
+</figure>
+</section>
+
+<section class="yelp-study" aria-labelledby="yelp-reviews-title">
+<div>
+<h4 id="yelp-reviews-title">Separate review activity from ratings</h4>
+<p>I built a Tableau story that moves from the distribution of star ratings to monthly review counts and average ratings. I counted distinct review IDs by month and placed ratings on a separate story point so readers could compare the two trends in sequence.</p>
+<p><strong>Finding.</strong> Annual review volume fell 53.1% from 2019 to 2020 in the dataset, while monthly average ratings stayed near 3.7 stars.</p>
+</div>
+<figure>
+<a href="assets/yelp-review-volume.webp" aria-label="Open the full-size Tableau review story"><img src="assets/yelp-review-volume.webp" width="1021" height="921" loading="lazy" alt="Original Tableau story point with a monthly line chart showing a sharp drop in Yelp reviews in spring 2020."></a>
+<figcaption>Original Tableau story point · Click to enlarge</figcaption>
+</figure>
+</section>
 </article>
 <article>
 <p class="meta">SOA Case Analysis Competition · Team project</p>
