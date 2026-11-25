@@ -98,21 +98,21 @@ footer{border-top:1px solid var(--line);padding-block:1.3rem;color:var(--muted)}
 <h3 id="yelp-title">Understanding Yelp Reviews in Vancouver</h3>
 <p>I used Yelp business and review records to answer two questions: How can a reader explore Vancouver’s restaurant scene by cuisine and rating? And did review volume and average ratings change in the same way in 2020?</p>
 
-<section class="yelp-study" aria-labelledby="yelp-restaurant-title">
+<section class="yelp-study yelp-study--live" aria-labelledby="yelp-restaurant-title">
 <div>
-<h4 id="yelp-restaurant-title">Explore the restaurant scene</h4>
+<h4 id="yelp-restaurant-title">Vancouver Restaurants on Yelp</h4>
 <p>I built a dashboard covering 7,503 restaurant listings. The map shows where restaurants are located, the cuisine filter narrows the view, and the rating breakdown and top-10 table give readers two ways to compare what they see.</p>
 <p><strong>Finding.</strong> Medina Cafe led the displayed ranking with 2,302 reviews. Showing star ratings alongside review counts lets readers compare visibility and customer ratings in the same view.</p>
 </div>
-<figure>
-<a href="assets/yelp-restaurants.webp" aria-label="Open the full-size Tableau restaurant dashboard"><img src="assets/yelp-restaurants.webp" width="1003" height="802" loading="lazy" alt="Original Tableau restaurant dashboard with a Vancouver map, cuisine filter, star-rating treemap, and table of the ten most-reviewed restaurants."></a>
-<figcaption>Original Tableau dashboard · Click to enlarge</figcaption>
-</figure>
+<div class="yelp-live-frame" role="region" aria-label="Interactive Tableau restaurant dashboard" tabindex="0">
+<iframe title="Vancouver Restaurants on Yelp" src="https://public.tableau.com/views/Assignment_2_Parts_A_C_Polished/Dashboard1?:embed=yes&amp;:showVizHome=no&amp;:tabs=no&amp;:device=desktop" width="1466" height="960" loading="lazy" allowfullscreen></iframe>
+</div>
+<p class="yelp-live-link"><a href="https://public.tableau.com/app/profile/lizhe.bai/viz/Assignment_2_Parts_A_C_Polished/Dashboard1">Open the full-size dashboard on Tableau Public</a></p>
 </section>
 
 <section class="yelp-study yelp-study--live" aria-labelledby="yelp-reviews-title">
 <div>
-<h4 id="yelp-reviews-title">Separate review activity from ratings</h4>
+<h4 id="yelp-reviews-title">How Vancouver’s Yelp Reviews Changed</h4>
 <p>I built a Tableau story that moves from the distribution of star ratings to monthly review counts and average ratings. I counted distinct review IDs by month and placed ratings on a separate story point so readers could compare the two trends in sequence.</p>
 <p><strong>Finding.</strong> Annual review volume fell 53.1% from 2019 to 2020 in the dataset, while monthly average ratings stayed near 3.7 stars.</p>
 </div>
@@ -120,6 +120,17 @@ footer{border-top:1px solid var(--line);padding-block:1.3rem;color:var(--muted)}
 <iframe title="How Vancouver’s Yelp Reviews Changed" src="https://public.tableau.com/views/Assignment_2_Part_B_Story_Polished/PartB-ReviewDynamicsStoryboard?:embed=yes&amp;:showVizHome=no&amp;:tabs=no" width="1024" height="930" loading="lazy" allowfullscreen></iframe>
 </div>
 <p class="yelp-live-link"><a href="https://public.tableau.com/app/profile/lizhe.bai/viz/Assignment_2_Part_B_Story_Polished/PartB-ReviewDynamicsStoryboard">Open the full-size story on Tableau Public</a></p>
+</section>
+
+<section class="yelp-study yelp-study--live" aria-labelledby="yelp-users-title">
+<div>
+<h4 id="yelp-users-title">Yelp User Patterns</h4>
+<p>Explore how average ratings vary by users’ review counts, and see when users in the dataset joined Yelp. Select a heatmap cell or a point on the registration trend to inspect the underlying count.</p>
+</div>
+<div class="yelp-live-frame" role="region" aria-label="Interactive Tableau user dashboard" tabindex="0">
+<iframe title="Yelp User Patterns" src="https://public.tableau.com/views/Assignment_2_Parts_A_C_Polished/PartC-UserPatterns?:embed=yes&amp;:showVizHome=no&amp;:tabs=no&amp;:device=desktop" width="1016" height="840" loading="lazy" allowfullscreen></iframe>
+</div>
+<p class="yelp-live-link"><a href="https://public.tableau.com/app/profile/lizhe.bai/viz/Assignment_2_Parts_A_C_Polished/PartC-UserPatterns">Open the full-size dashboard on Tableau Public</a></p>
 </section>
 </article>
 <article>
