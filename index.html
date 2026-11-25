@@ -52,6 +52,10 @@ footer{border-top:1px solid var(--line);padding-block:1.3rem;color:var(--muted)}
 .yelp img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:.25rem}
 .yelp figcaption{font-size:.8rem;color:var(--muted);margin-top:.35rem}
 @media(max-width:48rem){.yelp-study{grid-template-columns:1fr}}
+.yelp-study--live{grid-template-columns:minmax(0,1fr);gap:.65rem}
+.yelp-live-frame{max-width:100%;overflow:auto;border:1px solid var(--line);border-radius:.25rem;background:#fff}
+.yelp-live-frame iframe{display:block;border:0}
+.yelp-live-link{font-size:.9rem;margin:0}
 </style>
 </head>
 <body>
@@ -106,16 +110,16 @@ footer{border-top:1px solid var(--line);padding-block:1.3rem;color:var(--muted)}
 </figure>
 </section>
 
-<section class="yelp-study" aria-labelledby="yelp-reviews-title">
+<section class="yelp-study yelp-study--live" aria-labelledby="yelp-reviews-title">
 <div>
 <h4 id="yelp-reviews-title">Separate review activity from ratings</h4>
 <p>I built a Tableau story that moves from the distribution of star ratings to monthly review counts and average ratings. I counted distinct review IDs by month and placed ratings on a separate story point so readers could compare the two trends in sequence.</p>
 <p><strong>Finding.</strong> Annual review volume fell 53.1% from 2019 to 2020 in the dataset, while monthly average ratings stayed near 3.7 stars.</p>
 </div>
-<figure>
-<a href="assets/yelp-review-volume.webp" aria-label="Open the full-size Tableau review story"><img src="assets/yelp-review-volume.webp" width="1021" height="921" loading="lazy" alt="Original Tableau story point with a monthly line chart showing a sharp drop in Yelp reviews in spring 2020."></a>
-<figcaption>Original Tableau story point · Click to enlarge</figcaption>
-</figure>
+<div class="yelp-live-frame" role="region" aria-label="Interactive Tableau story" tabindex="0">
+<iframe title="How Vancouver’s Yelp Reviews Changed" src="https://public.tableau.com/views/Assignment_2_Part_B_Story_Polished/PartB-ReviewDynamicsStoryboard?:embed=yes&amp;:showVizHome=no&amp;:tabs=no" width="1024" height="930" loading="lazy" allowfullscreen></iframe>
+</div>
+<p class="yelp-live-link"><a href="https://public.tableau.com/app/profile/lizhe.bai/viz/Assignment_2_Part_B_Story_Polished/PartB-ReviewDynamicsStoryboard">Open the full-size story on Tableau Public</a></p>
 </section>
 </article>
 <article>
